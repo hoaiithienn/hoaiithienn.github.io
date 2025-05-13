@@ -8,6 +8,10 @@ theme = "PaperMod"
   ShowBreadCrumbs = true
   defaultTheme = "auto"
 
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
+
 [menu]
 [[menu.main]]
   name = "About"
