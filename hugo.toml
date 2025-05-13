@@ -1,0 +1,23 @@
+baseURL = "https://lhthien.github.io/"
+languageCode = "en-us"
+title = "Thien Luong | Embedded Engineer"
+theme = "PaperMod"
+
+[params]
+  ShowReadingTime = true
+  ShowBreadCrumbs = true
+  defaultTheme = "auto"
+
+[menu]
+[[menu.main]]
+  name = "About"
+  url = "/about"
+[[menu.main]]
+  name = "Projects"
+  url = "/projects"
+[[menu.main]]
+  name = "Resume"
+  url = "/resume"
+[[menu.main]]
+  name = "Contact"
+  url = "mailto:LHThien@outlook.com"
