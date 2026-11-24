@@ -1,0 +1,22 @@
+{
+  "name": "wareops-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "firmware:build": "python3 firmware/build.py",
+    "firmware:check": "node scripts/run-firmware-check.mjs",
+    "qemu:fetch": "node scripts/fetch-browser-qemu.mjs",
+    "test": "node --test scripts/boot-gate.test.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "4.3.0",
+    "@tailwindcss/vite": "4.1.11",
+    "astro": "5.16.15",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwindcss": "4.1.11"
+  }
+}

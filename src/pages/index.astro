@@ -1,0 +1,66 @@
+---
+import FirmwareGateDemo from '../components/FirmwareGateDemo.jsx';
+import '../styles.css';
+
+const repo = 'https://github.com/hoaiithienn/hoaiithienn.github.io';
+const contact = 'mailto:LHThien@outlook.com';
+const inquiry = (subject, body) =>
+  `${contact}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+const poc = inquiry('WareOps PoC inquiry',
+  'The manual bench check we want to automate:\n\nWhat counts as a pass:\n');
+const workflow = inquiry('Hardware CI bench workflow',
+  'The bench check we still run manually:\n\nWhere we get stuck:\n');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="See a manual firmware startup check become an automated CI gate with an interactive QEMU demo from WareOps Technologies." />
+    <meta name="color-scheme" content="dark" />
+    <title>WareOps Technologies | Firmware CI gates</title>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        WareOps <span>Technologies</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#demo">Demo</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main id="main" class="wrap">
+      <section class="hero">
+        <h1>Turn a firmware bench check into a <em>CI gate.</em></h1>
+        <p>After flashing a build, someone watches the serial console to confirm initialization finishes before the firmware reports ready. Run that same check automatically on every pull request.</p>
+      </section>
+
+      <FirmwareGateDemo client:load base={import.meta.env.BASE_URL} />
+      <div class="evidence">
+        <p>The demo checks startup behavior through emulated serial output.</p>
+        <a href={repo + '/actions/workflows/firmware-check.yml'}>View CI runs</a>
+      </div>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Which bench check would you put on every pull request?</h2>
+        <p>Tell us what you verify by hand and how you decide it passed.</p>
+        <div class="contact-actions">
+          <a class="button primary" href={poc}>Discuss a PoC</a>
+          <a class="button secondary" href={workflow}>Share your bench workflow</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer wrap">
+      <span>WareOps Technologies</span>
+      <nav aria-label="External links">
+        <a href="https://github.com/hoaiithienn">GitHub</a>
+        <a href="https://www.linkedin.com/in/lhthien/">LinkedIn</a>
+      </nav>
+    </footer>
+  </body>
+</html>
