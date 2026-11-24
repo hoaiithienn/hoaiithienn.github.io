@@ -1,0 +1,46 @@
+name: Firmware CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      image:
+        description: Firmware image to check
+        type: choice
+        required: true
+        default: baseline
+        options:
+          - baseline
+          - regression
+
+permissions:
+  contents: read
+
+jobs:
+  boot-gate:
+    name: Firmware boot gate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - run: sudo apt-get update && sudo apt-get install -y clang-18 qemu-system-x86
+      - run: npm run firmware:build
+        env:
+          CLANG: clang-18
+      - run: npm test
+      - run: npm run firmware:check -- --verify-fixtures
+      - name: Evaluate firmware under test
+        run: npm run firmware:check -- "$FIRMWARE_IMAGE"
+        env:
+          FIRMWARE_IMAGE: ${{ inputs.image || 'baseline' }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: firmware-boot-evidence
+          path: reports/
+          if-no-files-found: ignore

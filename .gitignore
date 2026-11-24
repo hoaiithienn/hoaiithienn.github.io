@@ -3,3 +3,11 @@ _site
 .jekyll-cache
 .jekyll-metadata
 vendor
+
+node_modules/
+.astro/
+dist/
+public/qemu/qemu-system-i386.js
+public/qemu/qemu-system-i386.wasm
+public/firmware/
+reports/

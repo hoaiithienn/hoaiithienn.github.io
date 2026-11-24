@@ -1,0 +1,13 @@
+*
+!package.json
+!package-lock.json
+!astro.config.mjs
+!firmware/
+!scripts/
+!src/
+!public/
+public/**
+!public/.nojekyll
+!public/qemu/
+public/qemu/**
+!public/qemu/runner.js
